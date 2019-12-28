@@ -9,16 +9,16 @@ import sys
 
 model_name = "355M"
 if not os.path.isdir(os.path.join("models", model_name)):
-	print(f"Downloading {model_name} model...")
-	gpt2.download_gpt2(model_name=model_name)   # model is saved into current directory under /models/355M/
+    print(f"Downloading {model_name} model...")
+    gpt2.download_gpt2(model_name=model_name)   # model is saved into current directory under /models/355M/
 
 
 file_name = "bom.txt"
 if not os.path.isfile(file_name):
-	url = "https://www.gutenberg.org/cache/epub/17/pg17.txt"
-	data = requests.get(url)
-	with open(file_name, 'w') as f:
-		f.write(data.text)
+    url = "https://www.gutenberg.org/cache/epub/17/pg17.txt"
+    data = requests.get(url)
+    with open(file_name, 'w') as f:
+        f.write(data.text)
 
 sess = gpt2.start_tf_sess()
 gpt2.finetune(sess,
